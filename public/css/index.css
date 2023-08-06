@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background: #222;
+}
+
+.header {
+  color: #ffffff;
+  background: rgb(37, 37, 87);
+  height: 7%;
+  width: 100%;
+  position: relative;
+  z-index: 100;
+}
+.header > h1 {
+  font-size: 45px;
+}
+.ctr {
+  position: absolute;
+  top: 10px;
+  left: 43%;
+}
+.right {
+  position: absolute;
+  top: 10px;
+  right: 0px;
+  font-size: 25px;
+}
+.ctr > input {
+  height: 35px;
+  border: none;
+  outline: none;
+  background: rgba(0, 0, 0, 0.549);
+  border-radius: 75px;
+  width: 370px;
+  color: rgb(154, 152, 152);
+  text-align: center;
+  font-size: 17px;
+  transition: 0.2s ease-in;
+}
+.ctr > input:focus {
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 10px #f0f;
+}
+.ctr > input:hover {
+  box-shadow: 0px 0px 10px #f0f;
+}
+.right > img {
+  margin-right: 0.5%;
+}
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+.sticky + .ctr {
+  padding-top: 102px;
+}
+
+.uploadBox {
+  background: #444;
+  width: 550px;
+  height: 65%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 5px rgb(37, 37, 87);
+}
+.uploadBox > form > h1 {
+  color: white;
+  margin-top: 5%;
+}
+.uploadBox > form > input {
+  height: 5%;
+  margin-top: 5%;
+  width: 70%;
+  outline: none;
+  border: none;
+  font-size: 20px;
+  box-shadow: 0px 0px 3px #000;
+  transition: 0.25s ease-in-out;
+}
+
+.uploadBox > form > input:outline {
+  border: none;
+}
+.uploadBox > form > button {
+  margin-top: 5%;
+  width: 80%;
+  height: 40px;
+  font-size: 25px;
+  border-radius: 75px;
+  background: #111;
+  color: white;
+  border: none;
+  transition: 0.2s ease-in;
+}
+.uploadBox > form > img {
+  margin-top: 5%;
+}
+.uploadBox > form > button:hover {
+  box-shadow: 0px 0px 15px #00ccff;
+  background: rgb(37, 37, 87);
+}
+.uploadBox > form > input:focus {
+  border: none;
+  padding: 3%;
+}
+#wallpapers {
+  position: relative;
+  text-align: center;
+  width: 100%;
+}
