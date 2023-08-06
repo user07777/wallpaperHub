@@ -8,9 +8,9 @@
 <body>
   <div id="app">
     <div class="header">
-        <h1>WallpaperHub</h1>
+        <h1 onclick="javascript:location.href='/'">WallpaperHub</h1>
         <div class="ctr">
-            <input type="text" v-on:keyup.enter="srch" v-model="name" placeholder="anime loli 4k" class="searchBar">
+            <input type="text" onchange="change()" v-model="name" placeholder="anime loli 4k" class="searchBar">
         </div>
         <div class="right">
           <img onclick="javascript:location.href='upload.html'" id="upload" src="img/585e4bf3cb11b227491c339a.png" width="35px">
@@ -30,24 +30,26 @@ var header = document.getElementsByClassName("header")[0];
 
 var sticky = header.offsetTop;
 function myFunction() {
+  console.log("")
   if (window.pageYOffset > sticky) {
     header.classList.add("sticky");
   } else {
     header.classList.remove("sticky");
   }
 }
-
+header.classList.add("sticky")
 var app = new Vue({
   el: '#app',
   data: {
     wallpapers: [],
+    wallpapers2:[],
     name:""
   },
   methods: { 
     srch() {
 
-      this.wallpapers = this.wallpapers.filter(x => x.name.includes(name) || x.wname.includes(name))
-      console.log(this.wallpapers)
+      this.wallpapers2 = this.wallpapers.filter(x => x.name.includes(name) || x.wname.includes(name))
+      console.log()
     }
   },
   mounted () {
@@ -56,6 +58,22 @@ var app = new Vue({
     })
   }
 })
+const bkp = app.wallpapers
+bsearch = false
+change= () => {
+  name = app.name
+  if(app.name == "") {
 
+    location.href = "/"
+  }
+  if(bsearch){
+    location.href = "/"
+    app.wallpapers = app.wallpapers.filter(x => x.wname.includes(name) || x.name.includes(name))
+
+  }else{
+    app.wallpapers = app.wallpapers.filter(x => x.wname.includes(app.name) || x.name.includes(app.name))
+  }
+  bsearch=true
+}
     </script>
 </body>
