@@ -1,0 +1,61 @@
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"/>
+    <title>.::wallpaperHub::.</title>
+</head>
+<body>
+  <div id="app">
+    <div class="header">
+        <h1>WallpaperHub</h1>
+        <div class="ctr">
+            <input type="text" v-on:keyup.enter="srch" v-model="name" placeholder="anime loli 4k" class="searchBar">
+        </div>
+        <div class="right">
+          <img onclick="javascript:location.href='upload.html'" id="upload" src="img/585e4bf3cb11b227491c339a.png" width="35px">
+        </div>
+    </div>
+    <div id="wallpapers">
+      <div v-for="i in wallpapers" class="wall">
+        <h1 style="color:white">{{i.wname}} by {{i.name}}</h1>
+          <img v-bind:src="i.path" width="80%">
+      </div>
+    </div>
+</div>
+<script>
+window.onscroll = function() {myFunction()};
+
+var header = document.getElementsByClassName("header")[0];
+
+var sticky = header.offsetTop;
+function myFunction() {
+  if (window.pageYOffset > sticky) {
+    header.classList.add("sticky");
+  } else {
+    header.classList.remove("sticky");
+  }
+}
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    wallpapers: [],
+    name:""
+  },
+  methods: { 
+    srch() {
+
+      this.wallpapers = this.wallpapers.filter(x => x.name.includes(name) || x.wname.includes(name))
+      console.log(this.wallpapers)
+    }
+  },
+  mounted () {
+    axios.get("http://localhost:3000/wallpapers").then(resp => {
+      (this.wallpapers = resp.data)
+    })
+  }
+})
+
+    </script>
+</body>
